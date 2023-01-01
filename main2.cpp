@@ -8,7 +8,7 @@ using namespace std;
 class Events
 { // declaration & definition
 protected:
-    string eventName, eventVenue; // data members of Events
+    string eventName, eventVenue, eventDate; // data members of Events
     int eventFee;
 
 public:
@@ -20,6 +20,8 @@ public:
         getline(cin, obj.eventName);
         cout << "What will be the Venue for " << obj.eventName << " ?" << endl;
         getline(cin, obj.eventVenue);
+        cout<< "Enter date of the Event (DD/MM/YYYY): ";
+        getline(cin,obj.eventDate);
         cout<<"Congratulations !!!"<<endl
         <<"Your event is added with eventId :"<<obj.eventId<<endl;
         return in;
@@ -30,7 +32,8 @@ public:
         ofstream obj = ofstream("eventmanagement.txt", ios::app); // to append data in text file
         obj<<"Event no  :   "<<eventId<<endl;
         obj<<"Event Name :  "<<eventName<<endl;
-        obj<<"Event Venue : "<<eventVenue<<endl<<endl;
+        obj<<"Event Venue : "<<eventVenue<<endl;
+        obj<<"Event Date : "<<eventDate<<endl<<endl;
         obj<<"=================================="<<endl<<endl;
     }
 
@@ -50,6 +53,8 @@ public:
         getline(cin, obj.eventName);
         cout << "What will be the Venue for " << obj.eventName << " ?" << endl;
         getline(cin, obj.eventVenue);
+        cout<< "Enter date of the Event (DD/MM/YYYY): ";
+        getline(cin,obj.eventDate);
         while(true){
         cout << "Enter Pass Fees :";
         cin >> obj.eventFee;
@@ -75,6 +80,7 @@ public:
         obj<<"Event no :    "<<eventId<<endl;
         obj<<"Event Name :  "<<eventName<<endl;
         obj<<"Event Venue : "<<eventVenue<<endl;
+        obj<<"Event Date : "<<eventDate<<endl;
         obj<<"Event Fee :   "<<eventFee<<endl<<endl;
         obj<<"=================================="<<endl<<endl;
     }
@@ -95,7 +101,8 @@ public:
         getline(cin, obj.eventName);
         cout << "What will be the Venue for " << obj.eventName << " ?" << endl;
         getline(cin, obj.eventVenue);
-    
+        cout<< "Enter date of the Event (DD/MM/YYYY): ";
+        getline(cin,obj.eventDate);
         while(true){
         cout << "Enter Pass Fees :";
         cin >> obj.eventFee;
@@ -121,6 +128,7 @@ public:
         obj<<"Event no :    "<<eventId<<endl;
         obj<<"Event Name :  "<<eventName<<endl;
         obj<<"Event Venue : "<<eventVenue<<endl;
+        obj<<"Event Date : "<<eventDate<<endl;
         obj<<"Event Fee :   "<<eventFee<<endl<<endl;
         obj<<"=================================="<<endl<<endl;
     }
@@ -248,8 +256,12 @@ int main()
             break;
 
             case 3:
-            cout<<"=========== Book Tickets =========="<<endl<<endl;
+            cout<<endl<<"=========== Book Tickets =========="<<endl<<endl;
             int seatsNum , seatX, seatY;
+            int id;
+            cout<<"Enter Event ID for the show you want to book: ";
+            cin>>id;
+            cout<<endl<<" =====Showing Available Seats for Event id: "<<id<<" ====="<<endl;
             atnds.defaultSeats();
             atnds.printSeats();
                 cout<<"How many Tickets do you want to buy? : "; 
@@ -263,7 +275,12 @@ int main()
             cout<<endl;
             atnds.printSeats();
             if(seatsNum != 0){
-                cout<<endl<<"Successfully booked seats"<<endl<<endl;
+                cout<<endl<<"Successfully booked seats"<<endl;
+                cout<<"+ ---------reciept--------- +"<<endl;
+                cout<<"   "<<"Show number:       "<<id<<endl;
+                cout<<"   "<<"number of tickets: "<<seatsNum<<endl;
+                cout<<"+ -------------------------- +"<<endl<<endl;
+
             }
             else{
                 cout<<endl<<"No tickets were booked!"<<endl<<endl;
