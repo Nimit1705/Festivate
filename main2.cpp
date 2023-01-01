@@ -3,7 +3,7 @@
 #include <string>
 using namespace std;
 
-class Attendees; // forward declaration
+
 
 class Events
 { // declaration & definition
@@ -48,8 +48,7 @@ protected:
     
 
 public:
-    friend Attendees;
-    friend class Attendees; // friend class
+
     friend istream &operator>>(istream &in, Esports &obj) // same as Events
     {
         cout << "Kindly Enter your Esports Event name : ";
@@ -62,7 +61,7 @@ public:
         if (cin.fail())
         {
             cin.clear(); // reset the stream
-            cin.ignore(); // ignore the invalid input
+            cin.ignore(10000,'\n'); // ignore the invalid input
             cout << "Invalid input! Please enter a valid number." << endl;
             
         }
@@ -108,7 +107,7 @@ public:
         if (cin.fail())
         {
             cin.clear(); // reset the stream
-            cin.ignore(); // ignore the invalid input
+            cin.ignore(10000,'\n'); // ignore the invalid input
             cout << "Invalid input! Please enter a valid number." << endl;
         }
         else
