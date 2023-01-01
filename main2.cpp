@@ -215,7 +215,7 @@ int main()
     
     while(true){
         menu:
-        cout<<endl<<"====== MENU ======"<<endl<<"1. Add Event name"<<endl<<"2. Show Events"<<endl<<"3. Buy Tickets"<<endl<<"4. Exit"<<endl<<endl<<"Enter your choice : ";
+        cout<<endl<<"====== MENU ======"<<endl<<"1. Add Event"<<endl<<"2. Show Events"<<endl<<"3. Buy Tickets"<<endl<<"4. Exit"<<endl<<endl<<"Enter your choice : ";
         cin>>opt;
         cin.ignore();
         switch(opt){
@@ -252,7 +252,7 @@ int main()
             int seatsNum , seatX, seatY;
             atnds.defaultSeats();
             atnds.printSeats();
-                cout<<"How may Tickets do you want to buy? : "; 
+                cout<<"How many Tickets do you want to buy? : "; 
                 cin>>seatsNum;
                 for(int i = 0; i<seatsNum; i++){
                     cout<<"Enter seat coordinates for ticket no. "<<i+1<<": "<<endl;;
