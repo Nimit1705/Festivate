@@ -276,7 +276,7 @@ int main()
             atnds.printSeats();
             if(seatsNum != 0){
                 cout<<endl<<"Successfully booked seats"<<endl;
-                cout<<"+ ---------reciept--------- +"<<endl;
+                cout<<"+ ---------receipt--------- +"<<endl;
                 cout<<"   "<<"Show number:       "<<id<<endl;
                 cout<<"   "<<"number of tickets: "<<seatsNum<<endl;
                 cout<<"+ -------------------------- +"<<endl<<endl;
