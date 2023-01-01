@@ -24,12 +24,7 @@ public:
         <<"Your event is added with eventId :"<<obj.eventId<<endl;
         return in;
     }; // declaration + definition
-    void display() // utility function to show data
-    {
-        cout << "EventID :" << eventId << endl;
-        cout << "Name of Event :" << eventName << endl;
-        cout << "Venue of Event :" << eventVenue << endl;
-    }
+    
 
     void sendData(){ // file handling to write in file
         ofstream obj = ofstream("eventmanagement.txt", ios::app); // to append data in text file
