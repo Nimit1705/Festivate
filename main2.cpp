@@ -229,7 +229,7 @@ int main()
         switch(opt){
             case 1:
             int opt2;
-            l1: cout<<endl<<"====== ADD EVENTS ======"<<endl<<"1. Add Esports Event"<<endl<<"2. Add Standup Show"<<endl<<"3. Add anyother type of event."<<endl<<"4. Exit"<<endl<<endl<<"Enter your choice: ";
+            l1: cout<<endl<<"====== ADD EVENTS ======"<<endl<<"1. Add Esports Event"<<endl<<"2. Add Standup Show"<<endl<<"3. Add anyother type of event."<<endl<<"4. Go Back"<<endl<<endl<<"Enter your choice: ";
             cin>>opt2; 
             cin.ignore();
             if(opt2 == 1){
@@ -277,8 +277,8 @@ int main()
             if(seatsNum != 0){
                 cout<<endl<<"Successfully booked seats"<<endl;
                 cout<<"+ ---------receipt--------- +"<<endl;
-                cout<<"   "<<"Show number:       "<<id<<endl;
-                cout<<"   "<<"number of tickets: "<<seatsNum<<endl;
+                cout<<endl<<"   "<<"Show number:       "<<id<<endl;
+                cout<<"   "<<"number of tickets: "<<seatsNum<<endl<<endl;
                 cout<<"+ -------------------------- +"<<endl<<endl;
 
             }
