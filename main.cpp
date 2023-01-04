@@ -5,11 +5,11 @@ using namespace std;
 
 
 
-class Events
+class Events 
 { // declaration & definition
 protected:
     string eventName, eventVenue, eventDate; // data members of Events
-    int eventFee;
+    
 
 public:
     static int eventId;     // data
@@ -43,7 +43,7 @@ public:
 class Esports : public Events
 { // inheritance
 protected:
-    
+    int eventFee;
 
 public:
 
@@ -81,7 +81,7 @@ public:
         obj<<"Event Name :  "<<eventName<<endl;
         obj<<"Event Venue : "<<eventVenue<<endl;
         obj<<"Event Date : "<<eventDate<<endl;
-        obj<<"Event Fee :   "<<eventFee<<endl<<endl;
+        obj<<"Event Fee :   "<<eventFee<<"/-"<<endl<<endl;
         obj<<"=================================="<<endl<<endl;
     }
 
@@ -90,6 +90,8 @@ public:
 
 class Standup : protected Events
 { // inheritance
+protected:
+    int eventFee;
 public:
     
     
@@ -129,7 +131,7 @@ public:
         obj<<"Event Name :  "<<eventName<<endl;
         obj<<"Event Venue : "<<eventVenue<<endl;
         obj<<"Event Date : "<<eventDate<<endl;
-        obj<<"Event Fee :   "<<eventFee<<endl<<endl;
+        obj<<"Event Fee :   "<<eventFee<<"/-"<<endl<<endl;
         obj<<"=================================="<<endl<<endl;
     }
     Standup(){};
@@ -152,12 +154,13 @@ class Attendees
         }
     }
     
-    string printSeats(){
+    void printSeats(){
         cout << "      0  1  2  3  4  5  6  7  8  9" << endl;
         for (int i = 0; i < rows; i++) {
             cout << 0+i << " = " << (char)('A' + i);
             for (int j = 0; j < columns; j++) {
                 cout << seats[i][j];
+                
             }          
         cout << endl;
         }
@@ -185,7 +188,9 @@ void getData(){
     char data[100];
     ifstream inFile;
     inFile.open("eventmanagement.txt");
-    if (!inFile){cout<<"There are no upcoming events at the moment :("<<endl<<endl<<"Check again Later :D"<<endl<<endl;}
+    if (!inFile){
+        cout<<"There are no upcoming events at the moment :("<<endl<<endl<<"Check again Later :D"<<endl<<endl;
+        }
     else{
     while(!inFile.eof()){
         inFile.getline(data,100);
@@ -217,15 +222,18 @@ void addStandUp(){
 int Events::eventId = 0;
 int main()
 {   
+    int arrx[10];
+    int arry[10];
     Attendees atnds;
     char ch = 'y';
     int opt;
-    
+    char arrAlpha[10] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I' ,'J'};
     while(true){
         menu:
         cout<<endl<<"====== MENU ======"<<endl<<"1. Add Event"<<endl<<"2. Show Events"<<endl<<"3. Buy Tickets"<<endl<<"4. Exit"<<endl<<endl<<"Enter your choice : ";
         cin>>opt;
         cin.ignore();
+        
         switch(opt){
             case 1:
             int opt2;
@@ -259,18 +267,28 @@ int main()
             cout<<endl<<"=========== Book Tickets =========="<<endl<<endl;
             int seatsNum , seatX, seatY;
             int id;
+            
+            
+            atnds.defaultSeats();
+            atnds.printSeats();
             cout<<"Enter Event ID for the show you want to book: ";
             cin>>id;
             cout<<endl<<" =====Showing Available Seats for Event id: "<<id<<" ====="<<endl;
-            atnds.defaultSeats();
-            atnds.printSeats();
+            
                 cout<<"How many Tickets do you want to buy? : "; 
+                
                 cin>>seatsNum;
                 for(int i = 0; i<seatsNum; i++){
+                    
                     cout<<"Enter seat coordinates for ticket no. "<<i+1<<": "<<endl;;
                     cout<<"X coordinates: "; cin>>seatX;
                     cout<<"Y coordinates: "; cin>>seatY;
-                    atnds.bookSeat(seatX,seatY);    
+                    atnds.bookSeat(seatX,seatY); 
+                    arrx[i] = seatX;
+                    arry[i] = seatY;
+            
+
+                      
                 }
             cout<<endl;
             atnds.printSeats();
@@ -278,7 +296,12 @@ int main()
                 cout<<endl<<"Successfully booked seats"<<endl;
                 cout<<"+ ---------receipt--------- +"<<endl;
                 cout<<endl<<"   "<<"Show number:       "<<id<<endl;
-                cout<<"   "<<"number of tickets: "<<seatsNum<<endl<<endl;
+                cout<<"   "<<"number of tickets: "<<seatsNum<<endl;
+                cout<<"   "<<"seats booked :     "<<endl;
+                for(int i=0;i<seatsNum;i++){
+                    cout<<"   "<<arrAlpha[arrx[i]]<<arry[i]<<" ";
+                }
+                cout<<endl<<endl;
                 cout<<"+ -------------------------- +"<<endl<<endl;
 
             }
